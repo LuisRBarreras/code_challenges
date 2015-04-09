@@ -1,4 +1,5 @@
 <?php
+//Check description on https://www.codeeval.com/open_challenges/97/
 $fileHandle = fopen("example.txt", "r");
 while(!feof($fileHandle)) {
     $line = trim(fgets($fileHandle));
