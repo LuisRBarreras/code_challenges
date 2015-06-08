@@ -5,24 +5,32 @@
 //then return 1 because in the first parameter you have the straight triple 999 and you have a straight double,
 //99, of the same number in the second parameter. If this isn't the case, return 0.
 
-function  tripleDouble($n1, $n2) {
-	$triples = findRepetitions(strval($n1),3);
-	$doubles = findRepetitions(strval($n2),2);
-	$results = array_intersect($triples, $doubles);
-	if(count($results)>0)  {
-		return 1;
-	}	
-	return 0;
-}
-function findRepetitions($n, $size) {
-	$length = strlen($n);
-	$setNumbers = array();
-	for($i=0; $i<=$length-$size; $i++) {
-		$current = substr($n,$i, $size);
-		if($current === str_repeat($n[$i], $size)) {
-			array_push($setNumbers, $n[$i]);
-		}
+class TripleDouble
+{
+	const TRIPLE = 3;
+	const DOUBLE = 2;
 
+	public function execute($n1, $n2) {
+		$triples = $this->findRepetitions(strval($n1),self::TRIPLE);
+		$doubles = $this->findRepetitions(strval($n2),self::DOUBLE);
+		return $this->checkCollitions($triples,$doubles);
 	}
-	return $setNumbers;
+
+	private function checkCollitions($triples, $doubles) {
+		$result = array_intersect($triples, $doubles);
+		return ($result) ? 1 : 0;
+	}
+
+	private function findRepetitions($n, $size) {
+		$length = strlen($n);
+		$setNumbers = array();
+		for($i=0; $i<=$length-$size; $i++) {
+			$current = substr($n,$i, $size);
+			if($current === str_repeat($n[$i], $size)) {
+				array_push($setNumbers, $n[$i]);
+			}
+
+		}
+		return $setNumbers;
+	}
 }
