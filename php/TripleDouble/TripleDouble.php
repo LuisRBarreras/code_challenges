@@ -7,12 +7,12 @@
 
 class TripleDouble
 {
-	const TRIPLE = 3;
-	const DOUBLE = 2;
+	const _TRIPLE = 3;
+	const _DOUBLE = 2;
 
 	public function execute($n1, $n2) {
-		$triples = $this->findRepetitions(strval($n1),self::TRIPLE);
-		$doubles = $this->findRepetitions(strval($n2),self::DOUBLE);
+		$triples = $this->findRepetitions(strval($n1),self::_TRIPLE);
+		$doubles = $this->findRepetitions(strval($n2),self::_DOUBLE);
 		return $this->checkCollitions($triples,$doubles);
 	}
 
